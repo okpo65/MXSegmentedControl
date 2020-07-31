@@ -115,6 +115,7 @@ open class MXSegmentedControl: UIControl {
     public var progress: CGFloat = 0 {
         didSet { layoutIndicator() }
     }
+    public var isSelectControl: Bool = false
     
     /// The currently selected segment index.
     public private(set) var selectedIndex: Int = 0 {
@@ -253,7 +254,12 @@ open class MXSegmentedControl: UIControl {
         indicator.frame = frame
         let tmp = frame.origin.x - (contentView.frame.width / 2)
         print("tmp",tmp,frame.origin.x)
-        _scrollView.scrollRectToVisible(CGRect(x: tmp, y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
+        if isSelectControl {
+            _scrollView.scrollRectToVisible(CGRect(x: tmp, y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
+        } else {
+            _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
+        }
+//        _scrollView.scrollRectToVisible(CGRect(x: tmp, y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
 //        _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
 //        _scrollView.scrollRectToVisible(CGRect(x: frame.origin.x - (contentView.frame.width / 2 - current.frame.size.width / 2), y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
     }
@@ -283,6 +289,7 @@ open class MXSegmentedControl: UIControl {
         if context == &self.context {
             
             if let scrollView = scrollView, scrollView.isDragging || scrollView.isDecelerating {
+                isSelectControl = false
                 progress = CGFloat(scrollView.contentOffset.x / scrollView.frame.size.width)
                 selectedIndex = Int(roundf( Float(progress) ))
             }
@@ -462,7 +469,7 @@ extension MXSegmentedControl {
     ///   - animated: true if the selection should be animated, false if it should be immediate.
     public func select(index: Int, animated: Bool) {
         selectedIndex = index
-        
+        isSelectControl = true
         UIView.animate(withDuration: animated ? animation.duration : 0,
                        delay: animation.delay,
                        usingSpringWithDamping: animation.dampingRatio,
