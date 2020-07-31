@@ -323,7 +323,8 @@ extension MXSegmentedControl {
         set { layer.borderColor = newValue?.cgColor }
     }
     
-    
+    @IBInspectable public dynamic var separatorTop: CGFloat {
+        get { return contentView.separators.inset.top }
         set { contentView.separators.inset.top = newValue }
     }
     
