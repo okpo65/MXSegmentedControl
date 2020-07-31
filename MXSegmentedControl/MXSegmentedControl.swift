@@ -251,7 +251,8 @@ open class MXSegmentedControl: UIControl {
         }
         
         indicator.frame = frame
-        _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
+//        _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
+        _scrollView.scrollRectToVisible(CGRect(x: frame.origin.x - (contentView.frame.width / 2 - current.frame.size.width / 2), y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
     }
     
     /// :nodoc:
