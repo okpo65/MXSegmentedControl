@@ -253,7 +253,6 @@ open class MXSegmentedControl: UIControl {
         
         indicator.frame = frame
         let tmp = frame.origin.x - (contentView.frame.width / 2)
-        print("tmp",tmp,frame.origin.x)
         if isSelectControl {
             _scrollView.scrollRectToVisible(CGRect(x: tmp, y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
         } else {
@@ -324,8 +323,7 @@ extension MXSegmentedControl {
         set { layer.borderColor = newValue?.cgColor }
     }
     
-    @IBInspectable public dynamic var separatorTop: CGFloat {
-        get { return contentView.separators.inset.top }
+    
         set { contentView.separators.inset.top = newValue }
     }
     
