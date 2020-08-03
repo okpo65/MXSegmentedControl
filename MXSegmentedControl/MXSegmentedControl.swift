@@ -259,7 +259,8 @@ open class MXSegmentedControl: UIControl {
         if frame.origin.x + UIScreen.main.bounds.width / 2 >= contentView.frame.width {
             selectedCenterX = contentView.frame.width - UIScreen.main.bounds.width
         }
-        if isSelectControl {
+
+        if isSelectControl && contentView.frame.width > UIScreen.main.bounds.width {
             _scrollView.setContentOffset(CGPoint(x: selectedCenterX, y: 0), animated: !frame.intersects(_scrollView.bounds))
         } else {
             _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
