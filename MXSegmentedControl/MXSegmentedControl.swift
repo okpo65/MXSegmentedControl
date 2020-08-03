@@ -252,15 +252,18 @@ open class MXSegmentedControl: UIControl {
         }
         
         indicator.frame = frame
-        let tmp = frame.origin.x - (contentView.frame.width / 2)
+        var selectedCenterX = max(0, frame.origin.x - UIScreen.main.bounds.width / 2)
+        if frame.origin.x + frame.width / 2 > UIScreen.main.bounds.width / 2 {
+            selectedCenterX = max(0, frame.origin.x - UIScreen.main.bounds.width / 2 + frame.width / 2)
+        }
+        if frame.origin.x + UIScreen.main.bounds.width / 2 >= contentView.frame.width {
+            selectedCenterX = contentView.frame.width - UIScreen.main.bounds.width
+        }
         if isSelectControl {
-            _scrollView.scrollRectToVisible(CGRect(x: tmp, y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
+            _scrollView.setContentOffset(CGPoint(x: selectedCenterX, y: 0), animated: !frame.intersects(_scrollView.bounds))
         } else {
             _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
         }
-//        _scrollView.scrollRectToVisible(CGRect(x: tmp, y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
-//        _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
-//        _scrollView.scrollRectToVisible(CGRect(x: frame.origin.x - (contentView.frame.width / 2 - current.frame.size.width / 2), y: frame.origin.y, width: contentView.frame.width, height: frame.height), animated: !frame.intersects(_scrollView.bounds))
     }
     
     /// :nodoc:
@@ -467,6 +470,7 @@ extension MXSegmentedControl {
     ///   - index: The segment index to be selected.
     ///   - animated: true if the selection should be animated, false if it should be immediate.
     public func select(index: Int, animated: Bool) {
+//        if selectedIndex == index { return }
         selectedIndex = index
         isSelectControl = true
         UIView.animate(withDuration: animated ? animation.duration : 0,
