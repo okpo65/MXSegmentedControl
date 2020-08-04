@@ -35,7 +35,7 @@ class SegmentioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        segmentControl3.selectedFont = UIFont.systemFont(ofSize: 15, weight: .bold)
+        segmentControl3.selectedFont = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         segmentControl1.append(title: "Tornado")
         segmentControl1.append(title: "Earthquakes")

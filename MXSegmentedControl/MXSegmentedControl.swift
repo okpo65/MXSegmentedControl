@@ -135,6 +135,7 @@ open class MXSegmentedControl: UIControl {
             
             contentView.segments.forEach { $0.titleLabel?.font = font }
             contentView.segments[selectedIndex].titleLabel?.font = selectedFont
+            setNeedsLayout()
         }
     }
     
