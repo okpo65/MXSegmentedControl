@@ -84,6 +84,10 @@ open class MXSegmentedControl: UIControl {
         }
     }
     
+    @IBInspectable public var indicatorWidth: CGFloat = 0
+        
+    
+    
     /// The segmented control content insets
     @IBInspectable public dynamic var contentEdgeInsets = UIEdgeInsets.zero
     
@@ -250,8 +254,13 @@ open class MXSegmentedControl: UIControl {
             //bounce right
             frame.size.width = current.frame.size.width * (CGFloat(contentView.segments.count) - progress)
         }
+
+        if indicatorWidth == 0 {
+            indicator.frame = frame
+        } else {
+            indicator.frame = CGRect(x: frame.origin.x + frame.width / 2 - indicatorWidth / 2, y: frame.origin.y, width: indicatorWidth, height: frame.height)
+        }
         
-        indicator.frame = frame
         var selectedCenterX = max(0, frame.origin.x - UIScreen.main.bounds.width / 2)
         if frame.origin.x + frame.width / 2 > UIScreen.main.bounds.width / 2 {
             selectedCenterX = max(0, frame.origin.x - UIScreen.main.bounds.width / 2 + frame.width / 2)
