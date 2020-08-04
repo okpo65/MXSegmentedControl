@@ -34,7 +34,9 @@ class SegmentioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        segmentControl3.selectedFont = UIFont.systemFont(ofSize: 15, weight: .bold)
+        
         segmentControl1.append(title: "Tornado")
         segmentControl1.append(title: "Earthquakes")
         segmentControl1.append(title: "Extreme heat")
@@ -97,6 +99,8 @@ class SegmentioViewController: UIViewController {
             .set(image: #imageLiteral(resourceName: "wildfires"))
             .set(image: .top)
             .set(padding: 16)
+        
+        
     }
 
 }

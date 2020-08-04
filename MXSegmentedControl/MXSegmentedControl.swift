@@ -55,6 +55,8 @@ open class MXSegmentedControl: UIControl {
             setNeedsLayout()
         }
     }
+    //The font of the selected segment.
+    @IBInspectable public dynamic var selectedFont = UIFont.systemFont(ofSize: 17)
     
     /// Sets the color of the segments title to use for the normal state.
     @IBInspectable public dynamic var textColor: UIColor = .lightGray {
@@ -73,6 +75,9 @@ open class MXSegmentedControl: UIControl {
             }
         }
     }
+    
+        
+
     
     /// Sets the width of the segments.
     @IBInspectable public var segmentWidth: CGFloat = 0 {
@@ -127,6 +132,9 @@ open class MXSegmentedControl: UIControl {
         didSet {
             sendActions(for: .valueChanged)
             contentView.segments[selectedIndex].isSelected = true
+            
+            contentView.segments.forEach { $0.titleLabel?.font = font }
+            contentView.segments[selectedIndex].titleLabel?.font = selectedFont
         }
     }
     
@@ -415,10 +423,10 @@ extension MXSegmentedControl {
         segment.setTitleColor(textColor, for: .normal)
         segment.setTitleColor(selectedTextColor, for: .selected)
         segment.contentEdgeInsets = segmentEdgeInsets
-        segment.titleLabel?.font = font
+
         segment.isSelected = (contentView.segments.count == selectedIndex)
         segment.addTarget(self, action: #selector(MXSegmentedControl.select(segment:)), for: .touchUpInside)
-        
+        segment.titleLabel?.font = segment.isSelected ? selectedFont : font
         contentView.append(segment)
         return segment
     }
