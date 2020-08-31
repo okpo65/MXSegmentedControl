@@ -265,7 +265,7 @@ open class MXSegmentedControl: UIControl {
         }
 
         if indicatorWidth == 0 {
-            indicator.frame = frame
+            indicator.frame = CGRect(x: frame.origin.x + ((indicatorLeft + indicatorRight) / 2), y: frame.origin.y, width: frame.width - indicatorLeft - indicatorRight, height: frame.height)
         } else {
             indicator.frame = CGRect(x: frame.origin.x + frame.width / 2 - (indicatorWidth - indicatorLeft - indicatorRight) / 2, y: frame.origin.y, width: indicatorWidth - indicatorLeft - indicatorRight, height: frame.height)
         }
