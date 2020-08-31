@@ -267,7 +267,7 @@ open class MXSegmentedControl: UIControl {
         if indicatorWidth == 0 {
             indicator.frame = frame
         } else {
-            indicator.frame = CGRect(x: frame.origin.x + frame.width / 2 - indicatorWidth / 2, y: frame.origin.y, width: indicatorWidth, height: frame.height)
+            indicator.frame = CGRect(x: frame.origin.x + frame.width / 2 - (indicatorWidth - indicatorLeft - indicatorRight) / 2, y: frame.origin.y, width: indicatorWidth - indicatorLeft - indicatorRight, height: frame.height)
         }
         
         var selectedCenterX = max(0, frame.origin.x - UIScreen.main.bounds.width / 2)
