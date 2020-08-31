@@ -82,22 +82,22 @@ public class MXIndicator: UIView {
         var frame = self.bounds.inset(by: contentEdgeInsets) //container.inset(by: margin)
         //UIEdgeInsetsInsetRect(bounds, contentEdgeInsets)
         
-        if linePosition == .top {
-            
-            lineView.frame = CGRect(x: 0, y: 0, width: frame.width, height: lineHeight)
-            
-            frame.origin.y = lineHeight
-            frame.size.height -= lineHeight
-            boxView.frame = frame
-            
-        } else {
-            frame.size.height -= lineHeight
-            boxView.frame = frame
-            
-            frame.origin.y = frame.size.height
-            frame.size.height = lineHeight
-            lineView.frame = frame
-        }
+//        if linePosition == .top {
+//            
+//            lineView.frame = CGRect(x: 0, y: 0, width: frame.width, height: lineHeight)
+//            
+//            frame.origin.y = lineHeight
+//            frame.size.height -= lineHeight
+//            boxView.frame = frame
+//            
+//        } else {
+//            frame.size.height -= lineHeight
+//            boxView.frame = frame
+//            
+//            frame.origin.y = frame.size.height
+//            frame.size.height = lineHeight
+//            lineView.frame = frame
+//        }
     }
     
 }
