@@ -51,6 +51,8 @@ class SegmentioViewController: UIViewController {
         segmentControl2.append(image: #imageLiteral(resourceName: "eruption"))
         segmentControl2.append(image: #imageLiteral(resourceName: "floods"))
         segmentControl2.append(image: #imageLiteral(resourceName: "wildfires"))
+        segmentControl2.indicatorRight = 10
+        segmentControl2.indicatorLeft = 10
         segmentControl2.segmentWidth = 128
         
         segmentControl3.append(title: "Tornado")

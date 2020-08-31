@@ -367,12 +367,20 @@ extension MXSegmentedControl {
     
     @IBInspectable public dynamic var indicatorLeft: CGFloat {
         get { return indicator.contentEdgeInsets.left }
-        set { indicator.contentEdgeInsets.left = newValue }
+        set {
+            indicator.contentEdgeInsets.left = newValue
+            indicator.frame.inset(by: indicator.contentEdgeInsets)
+            
+        }
     }
     
     @IBInspectable public dynamic var indicatorRight: CGFloat {
         get { return indicator.contentEdgeInsets.right }
-        set { indicator.contentEdgeInsets.right = newValue }
+        set {
+            indicator.contentEdgeInsets.right = newValue
+            indicator.frame.inset(by: indicator.contentEdgeInsets)
+            
+        }
     }
     
     @IBInspectable public dynamic var indicatorHeight: CGFloat {

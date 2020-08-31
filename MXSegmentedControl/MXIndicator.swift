@@ -36,9 +36,14 @@ public class MXIndicator: UIView {
     
     /// The indicator insets
     public var contentEdgeInsets = UIEdgeInsets.zero
+        
+    
+        
+    
     
     /// The indicator line view.
     public let lineView = UIView()
+        
     
     public var linePosition = Position.bottom
     
