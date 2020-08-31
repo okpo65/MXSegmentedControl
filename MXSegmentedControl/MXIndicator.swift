@@ -67,33 +67,33 @@ public class MXIndicator: UIView {
     
     private func initialize() {
         
-        lineView.backgroundColor = tintColor
-        boxView.backgroundColor = tintColor
-        boxView.alpha = 0
-        
-        addSubview(boxView)
-        addSubview(lineView)
+//        lineView.backgroundColor = tintColor
+//        boxView.backgroundColor = tintColor
+//        boxView.alpha = 0
+//
+//        addSubview(boxView)
+//        addSubview(lineView)
     }
     
     /// :nodoc:
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        var frame = self.bounds.inset(by: contentEdgeInsets) //container.inset(by: margin)
+//        var frame = self.bounds.inset(by: contentEdgeInsets) //container.inset(by: margin)
         //UIEdgeInsetsInsetRect(bounds, contentEdgeInsets)
         
 //        if linePosition == .top {
-//            
+//
 //            lineView.frame = CGRect(x: 0, y: 0, width: frame.width, height: lineHeight)
-//            
+//
 //            frame.origin.y = lineHeight
 //            frame.size.height -= lineHeight
 //            boxView.frame = frame
-//            
+//
 //        } else {
 //            frame.size.height -= lineHeight
 //            boxView.frame = frame
-//            
+//
 //            frame.origin.y = frame.size.height
 //            frame.size.height = lineHeight
 //            lineView.frame = frame
