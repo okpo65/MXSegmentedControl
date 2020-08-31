@@ -36,7 +36,8 @@ class SegmentioViewController: UIViewController {
         super.viewDidLoad()
         
         segmentControl3.selectedFont = UIFont.systemFont(ofSize: 20, weight: .bold)
-        
+        segmentControl1.indicatorLeft = 10
+        segmentControl1.indicatorRight = 10
         segmentControl1.append(title: "Tornado")
         segmentControl1.append(title: "Earthquakes")
         segmentControl1.append(title: "Extreme heat")
