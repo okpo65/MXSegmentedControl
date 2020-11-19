@@ -568,6 +568,7 @@ extension MXSegmentedControl {
             get {
                 var size = CGSize(width: CGFloat(separators.layers.count) * separators.inset.width, height: UIView.noIntrinsicMetric)
                 for segment in segments {
+//                    print("sdfsdfsdfsdf",segment.width, separators.inset.width)
                     size.width += segment.width
                     size.height = max(segment.intrinsicContentSize.height, size.height)
                 }
@@ -584,9 +585,10 @@ extension MXSegmentedControl {
             var width = frame.size.width - CGFloat(separators.layers.count) * separators.inset.width
             
             for (index, segment) in segments.enumerated() {
-                
+//                print("sdfsdfsdf",segment.width, separators.inset.width)
                 var frame = CGRect.zero
-                frame.size.width = max(segment.width, width / CGFloat(self.segments.count - index))
+//                frame.size.width = max(segment.width, width / CGFloat(self.segments.count - index))
+                frame.size.width = segment.width
                 frame.size.height = height
                 segment.layer.frame = frame
                 
