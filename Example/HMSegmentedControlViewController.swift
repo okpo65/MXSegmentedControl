@@ -47,7 +47,7 @@ class HMSegmentedControlViewController: UIViewController {
         segmentControl2.append(title: "Six")
         segmentControl2.append(title: "Seven")
         segmentControl2.append(title: "Eight")
-        segmentControl2.segmentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        segmentControl2.segmentEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 10, right: 30)
         
         segmentControl3.append(image: #imageLiteral(resourceName: "1"))
             .set(image: #imageLiteral(resourceName: "1-selected"), for: .selected)

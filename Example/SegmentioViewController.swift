@@ -35,6 +35,7 @@ class SegmentioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segmentControl1.isFitToSegmentContent = true 
         segmentControl3.selectedFont = UIFont.systemFont(ofSize: 20, weight: .bold)
 //        segmentControl1.indicatorLeft = 10
 //        segmentControl1.indicatorRight = 10

@@ -126,6 +126,15 @@ open class MXSegmentedControl: UIControl {
     }
     public var isSelectControl: Bool = false
     
+    // set segment width to segment content width
+    public var isFitToSegmentContent: Bool = false {
+        didSet {
+            contentView.isFitToSegmentContent = isFitToSegmentContent
+        }
+    }
+    
+    
+    
     /// The currently selected segment index.
     public private(set) var selectedIndex: Int = 0 {
         willSet { contentView.segments[selectedIndex].isSelected = false }
@@ -526,6 +535,8 @@ extension MXSegmentedControl {
         
         var separators = Separators()
         
+        var isFitToSegmentContent: Bool = false
+        
         func append(_ segment: MXSegment) {
             guard !segments.contains(segment) else {
                 return
@@ -568,7 +579,6 @@ extension MXSegmentedControl {
             get {
                 var size = CGSize(width: CGFloat(separators.layers.count) * separators.inset.width, height: UIView.noIntrinsicMetric)
                 for segment in segments {
-//                    print("sdfsdfsdfsdf",segment.width, separators.inset.width)
                     size.width += segment.width
                     size.height = max(segment.intrinsicContentSize.height, size.height)
                 }
@@ -585,10 +595,12 @@ extension MXSegmentedControl {
             var width = frame.size.width - CGFloat(separators.layers.count) * separators.inset.width
             
             for (index, segment) in segments.enumerated() {
-//                print("sdfsdfsdf",segment.width, separators.inset.width)
                 var frame = CGRect.zero
-//                frame.size.width = max(segment.width, width / CGFloat(self.segments.count - index))
-                frame.size.width = segment.width
+                if isFitToSegmentContent {
+                    frame.size.width = segment.width
+                } else {
+                    frame.size.width = max(segment.width, width / CGFloat(self.segments.count - index))
+                }
                 frame.size.height = height
                 segment.layer.frame = frame
                 
